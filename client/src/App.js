@@ -3,17 +3,19 @@ import "/node_modules/bootstrap/dist/js/bootstrap.min.js";
 import './App.css';
 import Home from './Home';
 import StudentsView from './component/student/StudentsView';
-import NavBar from "./component/student/common/NavBar";
+import NavBar from "./component/common/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AddStudent from "./component/student/AddStudent";
 
 function App() {
   return (
     <div className="App">
-      <NavBar/>
-      <StudentsView/>
       <Router>
+      <NavBar />
         <Routes>
           <Route exact path="/" element={<Home/>}></Route>
+          <Route exact path="/view-students" element={<StudentsView/>}></Route>
+          <Route exact path="/add-student" element={<AddStudent/>}></Route>
         </Routes>
       </Router>
     </div>

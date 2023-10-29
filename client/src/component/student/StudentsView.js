@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
+import {FaTrashAlt} from "react-icons/fa";
+import {FaEdit} from "react-icons/fa";
+import {FaEye} from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const StudentsView = () => {
     const [students, setStudents] = useState([]);
@@ -17,9 +21,14 @@ const StudentsView = () => {
         }
     };
 
+    const handleDelete = async(id)=> {
+        await axios.delete(`http://localhost:9192/students/delete/${id}`);
+        loadStudents();
+    }
+
   return (
     <section>
-        <table className="table table-bordered table-hover">
+        <table className="table table-bordered table-hover shadow container">
             <thead>
                 <tr className="text-center">
                     <th>ID</th>
@@ -44,19 +53,21 @@ const StudentsView = () => {
                         <td>{student.department}</td>
 
                         <td className="mx-2">
-                            <button className="btn btn-warning">
-                                Update
-                            </button>
+                            <Link to={`/student-profile/${student.id}`} className="btn btn-info">
+                                <FaEye />
+                            </Link>
                         </td>
+
                         <td className="mx-2">
-                            <button className="btn btn-info">
-                                View
-                            </button>
+                            <Link to={`/edit-student/${student.id}`} className="btn btn-warning">
+                                <FaEdit />
+                            </Link>
                         </td>
                         
                         <td className="mx-2">
-                            <button className="btn btn-danger">
-                                Delete
+                            <button className="btn btn-danger"
+                            onClick={()=> handleDelete(student.id)}>
+                                <FaTrashAlt />
                             </button></td>
                     </tr>
                 ))}
