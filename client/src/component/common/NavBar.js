@@ -12,10 +12,10 @@ const NavBar = () => {
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <Link className="nav-link active" aria-current="page" to={"/view-students"}>View All Students</Link>
+                        <Link className="nav-link active" aria-current="page" to={"/view-students"}>View Students</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to={"/add-student"}>Add New Student</Link>
+                        <Link className="nav-link" to={"/add-student"}>Add Student</Link>
                     </li>
                 </ul>
             </div>

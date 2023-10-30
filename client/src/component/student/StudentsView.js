@@ -4,9 +4,11 @@ import {FaTrashAlt} from "react-icons/fa";
 import {FaEdit} from "react-icons/fa";
 import {FaEye} from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import Search from '../common/Search';
 
 const StudentsView = () => {
     const [students, setStudents] = useState([]);
+    const [search, setSearch] = useState("");
 
     useEffect(()=>{loadStudents();}, []);
 
@@ -28,7 +30,15 @@ const StudentsView = () => {
 
   return (
     <section>
-        <table className="table table-bordered table-hover shadow container">
+        <div className='container'>
+        <h2 style={{ textAlign: 'left' }}>Student List</h2>
+            
+        <Search 
+        search={search}
+        setSearch={setSearch}
+        />
+
+        <table className="table table-bordered table-hover shadow">
             <thead>
                 <tr className="text-center">
                     <th>ID</th>
@@ -41,7 +51,9 @@ const StudentsView = () => {
             </thead>
 
             <tbody className="text-center">
-                {students.map((student, index) => (
+                {students.filter((st)=> st.firstName.toLowerCase().includes(search))
+                
+                .map((student, index) => (
                     <tr key={student.id}>
                         <th scope="row" key = {index}>
                             {index + 1}
@@ -73,6 +85,7 @@ const StudentsView = () => {
                 ))}
             </tbody>
         </table>
+        </div>
     </section>
   )
 }

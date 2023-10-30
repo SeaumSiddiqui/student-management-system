@@ -35,6 +35,7 @@ const saveStudent = async(e) => {
                     <input
                         type='text'
                         className='form-control'
+                        placeholder='E.g., John'
                         id='firstName'
                         name='firstName'
                         value={firstName}
@@ -50,6 +51,7 @@ const saveStudent = async(e) => {
                     <input
                         type='text'
                         className='form-control'
+                        placeholder='E.g., Doe'
                         id='lastName'
                         name='lastName'
                         value={lastName}
@@ -65,6 +67,7 @@ const saveStudent = async(e) => {
                     <input
                         type='email'
                         className='form-control'
+                        placeholder='E.g., john.doe@example.com'
                         id='email'
                         name='email'
                         value={email}
@@ -82,6 +85,7 @@ const saveStudent = async(e) => {
                     <input
                         type='text'
                         className='form-control'
+                        placeholder='E.g., Computer Science'
                         id='department'
                         name='department'
                         value={department}
